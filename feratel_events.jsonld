@@ -1,0 +1,645 @@
+{
+  "@context": {
+    "ql": "http://semweb.mmlab.be/ns/ql#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rml": "http://semweb.mmlab.be/ns/rml#",
+    "rr": "http://www.w3.org/ns/r2rml#",
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "_:ub990bL32C15",
+      "rml:reference": "/Details/SerialEvents/SerialEvent/@Id"
+    },
+    {
+      "@id": "_:ub990bL168C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL170C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:faxNumber"
+      }
+    },
+    {
+      "@id": "_:ub990bL250C15",
+      "rml:reference": "/Links/Link/@Name"
+    },
+    {
+      "@id": "_:ub990bL196C15",
+      "rr:class": {
+        "@id": "schema:DigitalDocument"
+      },
+      "rr:template": "http://Feratel-Events/Document/{@Id}"
+    },
+    {
+      "@id": "_:ub990bL97C15",
+      "rml:reference": "/Details/StartTimes/@Time"
+    },
+    {
+      "@id": "file:///base/data/home/apps/s%7Erdf-translator/1.380697414950152317/#URLMapping",
+      "rml:logicalSource": {
+        "@id": "_:ub990bL238C19"
+      },
+      "rr:predicateObjectMap": [
+        {
+          "@id": "_:ub990bL248C24"
+        },
+        {
+          "@id": "_:ub990bL254C24"
+        }
+      ],
+      "rr:subjectMap": {
+        "@id": "_:ub990bL244C15"
+      }
+    },
+    {
+      "@id": "_:ub990bL88C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL90C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:endDate"
+      }
+    },
+    {
+      "@id": "_:ub990bL72C19",
+      "rml:iterator": "/Events/Event",
+      "rml:referenceFormulation": {
+        "@id": "ql:XPath"
+      },
+      "rml:source": "Feratel/Feratel-Events.xml"
+    },
+    {
+      "@id": "_:ub990bL52C16",
+      "rr:parentTriplesMap": {
+        "@id": "file:///base/data/home/apps/s%7Erdf-translator/1.380697414950152317/#DateMapping"
+      }
+    },
+    {
+      "@id": "_:ub990bL78C15",
+      "rr:class": {
+        "@id": "schema:DateTime"
+      },
+      "rr:template": "http://Feratel-Events/DateTime{@Id}"
+    },
+    {
+      "@id": "file:///base/data/home/apps/s%7Erdf-translator/1.380697414950152317/#DocumentMapping",
+      "rml:logicalSource": {
+        "@id": "_:ub990bL190C19"
+      },
+      "rr:predicateObjectMap": [
+        {
+          "@id": "_:ub990bL206C24"
+        },
+        {
+          "@id": "_:ub990bL218C24"
+        },
+        {
+          "@id": "_:ub990bL200C24"
+        },
+        {
+          "@id": "_:ub990bL224C24"
+        },
+        {
+          "@id": "_:ub990bL212C24"
+        },
+        {
+          "@id": "_:ub990bL230C24"
+        }
+      ],
+      "rr:subjectMap": {
+        "@id": "_:ub990bL196C15"
+      }
+    },
+    {
+      "@id": "_:ub990bL116C15",
+      "rml:reference": "/Company"
+    },
+    {
+      "@id": "_:ub990bL230C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL232C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:dateModified"
+      }
+    },
+    {
+      "@id": "_:ub990bL122C15",
+      "rml:reference": "/Title"
+    },
+    {
+      "@id": "_:ub990bL36C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL38C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:duration"
+      }
+    },
+    {
+      "@id": "_:ub990bL177C15",
+      "rml:reference": "/URL"
+    },
+    {
+      "@id": "_:ub990bL18C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL20C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:name"
+      }
+    },
+    {
+      "@id": "_:ub990bL26C15",
+      "rml:reference": "/Details/Location/Translation"
+    },
+    {
+      "@id": "_:ub990bL144C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL146C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:addressCountry"
+      }
+    },
+    {
+      "@id": "file:///base/data/home/apps/s%7Erdf-translator/1.380697414950152317/#Feratel-EventsMapping",
+      "rml:logicalSource": {
+        "@id": "_:ub990bL8C19"
+      },
+      "rr:predicateObjectMap": [
+        {
+          "@id": "_:ub990bL56C24"
+        },
+        {
+          "@id": "_:ub990bL43C24"
+        },
+        {
+          "@id": "_:ub990bL18C24"
+        },
+        {
+          "@id": "_:ub990bL63C24"
+        },
+        {
+          "@id": "_:ub990bL30C24"
+        },
+        {
+          "@id": "_:ub990bL24C24"
+        },
+        {
+          "@id": "_:ub990bL36C24"
+        },
+        {
+          "@id": "_:ub990bL50C24"
+        }
+      ],
+      "rr:subjectMap": {
+        "@id": "_:ub990bL14C15"
+      }
+    },
+    {
+      "@id": "_:ub990bL14C15",
+      "rr:class": {
+        "@id": "schema:Event"
+      },
+      "rr:template": "http://Feratel-Events/{@Id}"
+    },
+    {
+      "@id": "file:///base/data/home/apps/s%7Erdf-translator/1.380697414950152317/#PostalAddressMapping",
+      "rml:logicalSource": {
+        "@id": "_:ub990bL104C19"
+      },
+      "rr:predicateObjectMap": [
+        {
+          "@id": "_:ub990bL182C24"
+        },
+        {
+          "@id": "_:ub990bL144C24"
+        },
+        {
+          "@id": "_:ub990bL150C24"
+        },
+        {
+          "@id": "_:ub990bL132C24"
+        },
+        {
+          "@id": "_:ub990bL126C24"
+        },
+        {
+          "@id": "_:ub990bL120C24"
+        },
+        {
+          "@id": "_:ub990bL175C24"
+        },
+        {
+          "@id": "_:ub990bL138C24"
+        },
+        {
+          "@id": "_:ub990bL114C24"
+        },
+        {
+          "@id": "_:ub990bL168C24"
+        },
+        {
+          "@id": "_:ub990bL156C24"
+        },
+        {
+          "@id": "_:ub990bL162C24"
+        }
+      ],
+      "rr:subjectMap": {
+        "@id": "_:ub990bL110C15"
+      }
+    },
+    {
+      "@id": "_:ub990bL8C19",
+      "rml:iterator": "/Events/Event",
+      "rml:referenceFormulation": {
+        "@id": "ql:XPath"
+      },
+      "rml:source": "Feratel/Feratel-Events.xml"
+    },
+    {
+      "@id": "_:ub990bL254C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL256C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:url"
+      }
+    },
+    {
+      "@id": "_:ub990bL170C15",
+      "rml:reference": "/Fax"
+    },
+    {
+      "@id": "_:ub990bL146C15",
+      "rml:reference": "/Country"
+    },
+    {
+      "@id": "_:ub990bL200C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL202C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:description"
+      }
+    },
+    {
+      "@id": "_:ub990bL126C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL128C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:additionalType"
+      }
+    },
+    {
+      "@id": "_:ub990bL224C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL226C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:inLanguage"
+      }
+    },
+    {
+      "@id": "_:ub990bL56C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL58C16"
+      },
+      "rr:predicate": {
+        "@id": "schema:recordedIn"
+      }
+    },
+    {
+      "@id": "_:ub990bL63C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL65C16"
+      },
+      "rr:predicate": {
+        "@id": "schema:url"
+      }
+    },
+    {
+      "@id": "_:ub990bL20C15",
+      "rml:reference": "/Details/Names/Translation"
+    },
+    {
+      "@id": "_:ub990bL184C15",
+      "rml:reference": "/Phone"
+    },
+    {
+      "@id": "_:ub990bL95C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL97C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:startTime"
+      }
+    },
+    {
+      "@id": "_:ub990bL90C15",
+      "rml:reference": "/Details/Dates/Date/@To"
+    },
+    {
+      "@id": "_:ub990bL244C15",
+      "rr:class": {
+        "@id": "schema:URL"
+      },
+      "rr:template": "http://Feratel-Events/Link/{/Links/Link/@Id}"
+    },
+    {
+      "@id": "_:ub990bL220C15",
+      "rml:reference": "/Names/Translation"
+    },
+    {
+      "@id": "_:ub990bL182C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL184C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:telephone"
+      }
+    },
+    {
+      "@id": "_:ub990bL190C19",
+      "rml:iterator": "/Events/Event/Documents/Document",
+      "rml:referenceFormulation": {
+        "@id": "ql:XPath"
+      },
+      "rml:source": "Feratel/Feratel-Events.xml"
+    },
+    {
+      "@id": "_:ub990bL164C15",
+      "rml:reference": "/Email"
+    },
+    {
+      "@id": "_:ub990bL152C15",
+      "rml:reference": "/Town"
+    },
+    {
+      "@id": "_:ub990bL24C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL26C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:location"
+      }
+    },
+    {
+      "@id": "_:ub990bL45C15",
+      "rml:reference": "/Descriptions/Description"
+    },
+    {
+      "@id": "_:ub990bL158C15",
+      "rml:reference": "/ZipCode"
+    },
+    {
+      "@id": "_:ub990bL104C19",
+      "rml:iterator": "/Events/Event/Addresses/Address",
+      "rml:referenceFormulation": {
+        "@id": "ql:XPath"
+      },
+      "rml:source": "Feratel/Feratel-Events.xml"
+    },
+    {
+      "@id": "_:ub990bL175C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL177C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:url"
+      }
+    },
+    {
+      "@id": "_:ub990bL114C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL116C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:name"
+      }
+    },
+    {
+      "@id": "_:ub990bL256C15",
+      "rml:reference": "/Links/Link/@URL"
+    },
+    {
+      "@id": "file:///base/data/home/apps/s%7Erdf-translator/1.380697414950152317/#DateMapping",
+      "rml:logicalSource": {
+        "@id": "_:ub990bL72C19"
+      },
+      "rr:predicateObjectMap": [
+        {
+          "@id": "_:ub990bL95C24"
+        },
+        {
+          "@id": "_:ub990bL88C24"
+        },
+        {
+          "@id": "_:ub990bL82C24"
+        }
+      ],
+      "rr:subjectMap": {
+        "@id": "_:ub990bL78C15"
+      }
+    },
+    {
+      "@id": "_:ub990bL162C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL164C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:email"
+      }
+    },
+    {
+      "@id": "_:ub990bL110C15",
+      "rr:class": {
+        "@id": "schema:PostalAddress"
+      },
+      "rr:template": "http://Feratel-Events/Address/{@Id}"
+    },
+    {
+      "@id": "_:ub990bL248C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL250C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:name"
+      }
+    },
+    {
+      "@id": "_:ub990bL218C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL220C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:text"
+      }
+    },
+    {
+      "@id": "_:ub990bL134C15",
+      "rml:reference": "/AddressLine1"
+    },
+    {
+      "@id": "_:ub990bL58C16",
+      "rr:parentTriplesMap": {
+        "@id": "file:///base/data/home/apps/s%7Erdf-translator/1.380697414950152317/#DocumentMapping"
+      }
+    },
+    {
+      "@id": "_:ub990bL43C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL45C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:description"
+      }
+    },
+    {
+      "@id": "_:ub990bL232C15",
+      "rml:reference": "/@ChangeDate"
+    },
+    {
+      "@id": "_:ub990bL202C15",
+      "rml:reference": "/@Type"
+    },
+    {
+      "@id": "_:ub990bL156C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL158C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:postalCode"
+      }
+    },
+    {
+      "@id": "_:ub990bL140C15",
+      "rml:reference": "/AddressLine2"
+    },
+    {
+      "@id": "_:ub990bL214C15",
+      "rml:reference": "/@Extension"
+    },
+    {
+      "@id": "_:ub990bL120C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL122C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:alternateName"
+      }
+    },
+    {
+      "@id": "_:ub990bL50C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL52C16"
+      },
+      "rr:predicate": {
+        "@id": "schema:doorTime"
+      }
+    },
+    {
+      "@id": "_:ub990bL84C15",
+      "rml:reference": "/Details/Dates/Date/@From"
+    },
+    {
+      "@id": "_:ub990bL208C15",
+      "rml:reference": "/@Class"
+    },
+    {
+      "@id": "_:ub990bL82C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL84C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:startDate"
+      }
+    },
+    {
+      "@id": "_:ub990bL212C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL214C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:fileFormat"
+      }
+    },
+    {
+      "@id": "_:ub990bL38C15",
+      "rml:reference": "/Details/Duration"
+    },
+    {
+      "@id": "_:ub990bL226C15",
+      "rml:reference": "/Names/Translation/@Language"
+    },
+    {
+      "@id": "_:ub990bL65C16",
+      "rr:parentTriplesMap": {
+        "@id": "file:///base/data/home/apps/s%7Erdf-translator/1.380697414950152317/#URLMapping"
+      }
+    },
+    {
+      "@id": "_:ub990bL138C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL140C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:streetAddress"
+      }
+    },
+    {
+      "@id": "_:ub990bL206C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL208C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:disambiguatingDescription"
+      }
+    },
+    {
+      "@id": "_:ub990bL30C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL32C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:subEvent"
+      }
+    },
+    {
+      "@id": "_:ub990bL132C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL134C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:streetAddress"
+      }
+    },
+    {
+      "@id": "_:ub990bL128C15",
+      "rml:reference": "/@Type"
+    },
+    {
+      "@id": "_:ub990bL238C19",
+      "rml:iterator": "/Events/Event",
+      "rml:referenceFormulation": {
+        "@id": "ql:XPath"
+      },
+      "rml:source": "Feratel/Feratel-Events.xml"
+    },
+    {
+      "@id": "_:ub990bL150C24",
+      "rr:objectMap": {
+        "@id": "_:ub990bL152C15"
+      },
+      "rr:predicate": {
+        "@id": "schema:addressLocality"
+      }
+    }
+  ]
+}

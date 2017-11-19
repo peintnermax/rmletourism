@@ -1,0 +1,261 @@
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix schema: <http://schema.org/>.
+
+
+<#Feratel-InfrastructureMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Infrastructure.xml";
+		rml:iterator "/Infrastructure/InfrastructureItem";
+		rml:referenceFormulation ql:XPath;
+	];
+
+
+	rr:subjectMap[
+		rr:template "http://Feratel-Infrastructure/{@Id}";
+		rr:class schema:Accommodation
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Details/Names/Translation";
+		]
+	];
+	
+	rr:predicateObjectMap [
+		rr:predicate schema:disambiguatingDescription;
+		rr:objectMap[
+			rml:reference "/Details/Names/Translation/@Language";
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Descriptions/Description";
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:address;
+		rr:objectMap[
+			rr:parentTriplesMap <#PostalAddressMapping>;
+		]
+	];	
+	
+	rr:predicateObjectMap [
+		rr:predicate schema:geo;	
+		rr:objectMap [
+			rr:parentTriplesMap <#LocationMapping>;
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:photo;	#ImageObject / Photograph
+		rr:objectMap [
+			rr:parentTriplesMap <#DocumentMapping>;
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap [
+			rr:parentTriplesMap <#URLMapping>;
+		]
+	].
+
+
+	
+<#PostalAddressMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Infrastructure.xml";
+		rml:iterator "/Infrastructure/InfrastructureItem/Addresses/Address";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-Infrastructure/Address/{@Id}";
+		rr:class schema:PostalAddress
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Company";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:alternateName;
+		rr:objectMap[
+			rml:reference "/Title";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:additionalType;
+		rr:objectMap[
+			rml:reference "/@Type";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:streetAddress;
+		rr:objectMap[
+			rml:reference "/AddressLine1";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:streetAddress;
+		rr:objectMap[
+			rml:reference "/AddressLine2";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:addressCountry;
+		rr:objectMap[
+			rml:reference "/Country";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:addressLocality;
+		rr:objectMap[
+			rml:reference "/Town";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:postalCode;
+		rr:objectMap[
+			rml:reference "/ZipCode";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:email;
+		rr:objectMap[
+			rml:reference "/Email";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:faxNumber;
+		rr:objectMap[
+			rml:reference "/Fax";
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap[
+			rml:reference "/URL";
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:telephone;
+		rr:objectMap[
+			rml:reference "/Phone";
+		]
+	].
+<#DocumentMapping>#ImageObject
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Infrastructure.xml";
+		rml:iterator "/Infrastructure/InfrastructureItem/Documents/Document";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-Infrastructure/Document/{@Id}";
+		rr:class schema:ImageObject #DigitalDocument
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/@Type";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:disambiguatingDescription;
+		rr:objectMap[
+			rml:reference "/@Class";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:fileFormat;
+		rr:objectMap[
+			rml:reference "/@Extension";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:text;
+		rr:objectMap[
+			rml:reference "/Names/Translation";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:inLanguage;
+		rr:objectMap[
+			rml:reference "/Names/Translation/@Language";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap[
+			rml:reference "/URL";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:dateModified;
+		rr:objectMap[
+			rml:reference "/@ChangeDate";
+		]
+	].
+<#LocationMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Infrastructure.xml";
+		rml:iterator "/Infrastructure/InfrastructureItem";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-Infrastructure/{@Id}";
+		rr:class schema:GeoCoordinates
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:latitude;
+		rr:objectMap[
+			rml:reference "/Details/Position/@Latitude";
+		]
+	];
+	
+	rr:predicateObjectMap [
+		rr:predicate schema:longitude;
+		rr:objectMap[
+			rml:reference "/Details/Position/@Longitude";
+		]
+	].
+<#URLMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Infrastructure.xml";
+		rml:iterator "/Infrastructure/InfrastructureItem";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-Infrastructure/{/Links/Link/@Id}";
+		rr:class schema:URL
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Links/Link/@Name";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap[
+			rml:reference "/Links/Link/@URL";
+		]
+	].
+

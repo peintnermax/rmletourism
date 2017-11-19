@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bachelor</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="shortcut icon" href="/images/blr_standard.png"/>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+
+
+    <!-- Bootstrap core CSS -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
+
+</head>
+<body>
+	<div class="container">
+		 <div class="header clearfix">
+			 <nav>
+				 <ul class="nav nav-pills float-right">
+					 {{#if user}}
+
+						 <li class="nav-item">
+               <a class="nav-link active" href="/">Dashboard <span class="sr-only">(current)</span></a>
+             </li>
+						 <li class="nav-item">
+							 <a class="nav-link" href="/users/logout">Logout</a>
+						 </li>
+
+					 {{else}}
+						 <li class="nav-item">
+							 <a class="nav-link active" href="/users/login">Login <span class="sr-only">(current)</span></a>
+						 </li>
+						<li class="nav-item">
+							<a class="nav-link" href="/users/register">Register</a>
+						</li>
+					 {{/if}}
+				 </ul>
+			 </nav>
+
+			 <h3 class="text-muted">Unstructured Data to RDF</h3>
+		 </div>
+
+
+
+	 <div class="row">
+			<div class="col-lg-12">
+				{{#if success_msg}}
+					<div class="alert alert-success">{{success_msg}}</div>
+				{{/if}}
+
+				{{#if error_msg}}
+					<div class="alert alert-danger">{{error_msg}}</div>
+				{{/if}}
+
+				{{#if error}}
+					<div class="alert alert-danger">{{error}}</div>
+				{{/if}}
+
+				{{{body}}}
+			</div>
+		</div>
+
+		<!-- <div class="jumbotron">
+			 <h1 class="display-3">Jumbotron heading</h1>
+			 <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+			 <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+		 </div>-->
+
+
+		 <br><br>
+		 <footer class="footer">
+			 <p>&copy; Maximilian Peintner 2017</p>
+		 </footer>
+
+	 </div> <!-- /container -->
+</body>
+</html>

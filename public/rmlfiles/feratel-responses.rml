@@ -1,0 +1,144 @@
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix schema: <http://schema.org/>.
+
+
+<#CategoryMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/response-KeyValue-Categories.xml";
+		#rml:source "responsetest.xml";
+		#rml:iterator "/FeratelDsiRS/Result/KeyValues/Categories/Category";
+		rml:iterator "/Categories/Category";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://feratel.response-keyValue-Categories/{@Id}";
+		#rr:class schema:identifier
+		rr:class schema:Enumeration
+
+	];
+	
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap[
+			rml:reference "/@URL";
+			#rr:datatype schema:URL
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Name/Translation/@Language";
+			#rr:datatype schema:Language
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Name/Translation";
+		]
+	].
+
+
+<#InfrastructureTopicMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/response-KeyValue-InfrastructureTopic.xml";
+		rml:iterator "/InfrastructureTopics/InfrastructureTopic";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://feratel.response-KeyValue-InfrastructureTopic.xml/{@Id}";
+		rr:class schema:Enumeration
+		#no accurate schema found
+	];
+
+	
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Name/Translation/@Language";
+			#rr:datatype schema:Language
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Name/Translation";
+			#rr:datatype schema:Text
+		]
+	].
+
+<#InfrastructureTypesMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/response-KeyValue-InfrastructureType.xml";
+		rml:iterator "/InfrastructureTypes/InfrastructureType";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://feratel.response-keyValue-InfrastructureType/{@Type}";
+		rr:class schema:Enumeration
+	];	
+
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Name/Translation/@Language";
+			#rr:datatype schema:Language
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Name/Translation";
+		]
+	].
+
+
+
+<#SerialEventsMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/response-KeyValue-SerialEvents.xml";
+		rml:iterator "/SerialEvents/SerialEvent";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://feratel.response-keyValue-SerialEvent/{@Id}";
+		rr:class schema:Event
+	];	
+
+	#rr:predicateObjectMap [
+		#rr:predicate schema:eventStatus;
+		#rr:objectMap[
+			#rml:reference "/@Active";
+		#]
+
+	#];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Name/Translation/@Language";
+			#rr:datatype schema:Language
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Name/Translation";
+		]
+	].
+

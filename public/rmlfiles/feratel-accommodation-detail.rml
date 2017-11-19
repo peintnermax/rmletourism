@@ -1,0 +1,739 @@
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix schema: <http://schema.org/>.
+
+
+<#Feratel-ServiceProviderMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider";
+		rml:referenceFormulation ql:XPath;
+	];
+
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/{@Id}";
+		rr:class schema:LodgingBusiness
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Details/Name";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:currenciesAccepted;
+		rr:objectMap[
+			rml:reference "/Details/CurrencyCode";
+		]
+	];
+
+
+	rr:predicateObjectMap [
+		rr:predicate schema:branchCode;
+		rr:objectMap[
+			rml:reference "/Details/Code";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Details/Type";
+		]
+	];
+
+
+	rr:predicateObjectMap [
+		rr:predicate schema:review;
+		rr:objectMap[
+			rr:parentTriplesMap <#ReviewMapping>;
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:address;
+		rr:objectMap[
+			rr:parentTriplesMap <#PostalAddressMapping>;
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:geo;
+		rr:objectMap [
+			rr:parentTriplesMap <#LocationMapping>;
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:photo;	#ImageObject / Photograph
+		rr:objectMap [
+			rr:parentTriplesMap <#DocumentMapping>;
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:additionalProperty;
+		rr:objectMap [
+			rr:parentTriplesMap <#GTCMapping>;
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:additionalProperty;
+		rr:objectMap[
+			rml:reference "/Details/BankAccounts/Bank/@IBAN";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:containsPlace;
+		rr:objectMap [
+			rr:parentTriplesMap <#ServiceMapping>;
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap[
+			rml:reference "/Links/Link/@URL";
+		]
+	].
+	#rr:predicateObjectMap [
+	#	rr:predicate schema:url;
+	#	rr:objectMap [
+	#		rr:parentTriplesMap <#URLMapping>;
+	#	]
+	#].
+
+
+
+<#PostalAddressMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Addresses/Address";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Address/{@Id}";
+		rr:class schema:PostalAddress
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Company";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:alternateName;
+		rr:objectMap[
+			rml:reference "/Title";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:additionalType;
+		rr:objectMap[
+			rml:reference "/@Type";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:streetAddress;
+		rr:objectMap[
+			rml:reference "/AddressLine1";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:streetAddress;
+		rr:objectMap[
+			rml:reference "/AddressLine2";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:addressCountry;
+		rr:objectMap[
+			rml:reference "/Country";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:addressLocality;
+		rr:objectMap[
+			rml:reference "/Town";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:postalCode;
+		rr:objectMap[
+			rml:reference "/ZipCode";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:email;
+		rr:objectMap[
+			rml:reference "/Email";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:faxNumber;
+		rr:objectMap[
+			rml:reference "/Fax";
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap[
+			rml:reference "/URL";
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:telephone;
+		rr:objectMap[
+			rml:reference "/Phone";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:telephone;
+		rr:objectMap[
+			rml:reference "/Mobile";
+		]
+	].
+<#DocumentMapping>#ImageObject
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Documents/Document";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Document/{@Id}";
+		rr:class schema:ImageObject #DigitalDocument
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/@Type";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:disambiguatingDescription;
+		rr:objectMap[
+			rml:reference "/@Class";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:fileFormat;
+		rr:objectMap[
+			rml:reference "/@Extension";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:text;
+		rr:objectMap[
+			rml:reference "/Names/Translation";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:inLanguage;
+		rr:objectMap[
+			rml:reference "/Names/Translation/@Language";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap[
+			rml:reference "/URL";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:dateModified;
+		rr:objectMap[
+			rml:reference "/@ChangeDate";
+		]
+	].
+<#LocationMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Location/{@Id}";
+		rr:class schema:GeoCoordinates
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:latitude;
+		rr:objectMap[
+			rml:reference "/Details/Position/@Latitude";
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:longitude;
+		rr:objectMap[
+			rml:reference "/Details/Position/@Longitude";
+		]
+	].
+#<#BankAccountMapping>
+
+#	rml:logicalSource[
+#		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+#		rml:iterator "/ServiceProviders/ServiceProvider/Details/BankAccounts/Bank";
+#		rml:referenceFormulation ql:XPath;
+#	];
+#
+#	rr:subjectMap[
+#		rr:template "http://Feratel-ServiceProvider/Bank/{@Id}";
+#		rr:class schema:BankAccount
+#	];
+#	rr:predicateObjectMap [
+#		rr:predicate schema:name;
+#		rr:objectMap[
+#			rml:reference "/@IBAN";
+#		]
+#	].
+#	rr:predicateObjectMap [
+#		rr:predicate schema:identifier;
+#		rr:objectMap[
+#			rml:reference "/@Id";
+#		]
+#	].
+
+
+<#ReviewMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Descriptions/Description";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Descriptions/{@Id}";
+		rr:class schema:Review
+	];
+	rr:predicateObjectMap [# no predicates found
+		rr:predicate schema:text;
+		rr:objectMap[
+			rml:reference "";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/@Type";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:dateModified;
+		rr:objectMap[
+			rml:reference "/@ChangeDate";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:inLanguage;
+		rr:objectMap[
+			rml:reference "/@Language";
+		]
+	].
+#<#URLMapping>
+#
+#	rml:logicalSource[
+#		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+#		rml:iterator "/ServiceProviders/ServiceProvider/Links/Link";
+#		rml:referenceFormulation ql:XPath;
+#	];
+#
+#	rr:subjectMap[
+#		rr:template "http://Feratel-ServiceProvider/{@Id}";
+#		rr:class schema:URL
+#	];
+#	rr:predicateObjectMap [
+#		rr:predicate schema:name;
+#		rr:objectMap[
+#			rml:reference "/@Name";
+#		]
+#	];
+#	rr:predicateObjectMap [
+#		rr:predicate schema:url;
+#		rr:objectMap[
+#			rml:reference "/@URL";
+#		]
+#	].
+<#GTCMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/GTCs/GTC";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/GTC/{@Id}";
+		rr:class schema:PropertyValue
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/@Language";
+		]
+	];
+	rr:predicateObjectMap [#no results
+		rr:predicate schema:value;
+		rr:objectMap[
+			rml:reference "";
+		]
+	].
+
+<#ServiceMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service";
+		rml:referenceFormulation ql:XPath;
+	];
+
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/{@Id}";
+		rr:class schema:Accommodation #Place
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Details/Name/Translation";
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Details/Type";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:maximumAttendeeCapacity;
+		rr:objectMap[
+			rml:reference "/Details/MaxAvailability";
+		]
+	];
+	#next two predicateobjectmaps only with Accommodation, in Place not available as predicates
+	rr:predicateObjectMap [
+		rr:predicate schema:numberOfRooms;
+		rr:objectMap[
+			rml:reference "/Details/Rooms";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:floorSize;
+		rr:objectMap[
+			rml:reference "/Details/Size";
+		]
+	];
+		
+	rr:predicateObjectMap [
+		rr:predicate schema:containsPlace;
+		rr:objectMap[
+			rr:parentTriplesMap <#ProductMapping>;
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:review;
+		rr:objectMap[
+			rr:parentTriplesMap <#ServiceReviewMapping>;
+		]
+	];
+
+	rr:predicateObjectMap [
+		rr:predicate schema:photo;	#ImageObject / Photograph
+		rr:objectMap [
+			rr:parentTriplesMap <#ServiceDocumentMapping>;
+		]
+	].
+
+<#ServiceReviewMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/Descriptions/{Descriptions/Description/@Id}";
+		rr:class schema:Review
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:text;
+		rr:objectMap[
+			rml:reference "/Descriptions/Description";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Descriptions/Description/@Type";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:dateModified;
+		rr:objectMap[
+			rml:reference "/Descriptions/Description/@ChangeDate";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:inLanguage;
+		rr:objectMap[
+			rml:reference "/Descriptions/Description/@Language";
+		]
+	].
+<#ServiceDocumentMapping>#ImageObject
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service/Documents/Document";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/Document/{@Id}";
+		rr:class schema:ImageObject
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/@Type";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:disambiguatingDescription;
+		rr:objectMap[
+			rml:reference "/@Class";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:fileFormat;
+		rr:objectMap[
+			rml:reference "/@Extension";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:text;
+		rr:objectMap[
+			rml:reference "/Names/Translation";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:inLanguage;
+		rr:objectMap[
+			rml:reference "/Names/Translation/@Language";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:url;
+		rr:objectMap[
+			rml:reference "/URL";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:dateModified;
+		rr:objectMap[
+			rml:reference "/@ChangeDate";
+		]
+	].
+<#ProductMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service/Products/Product";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/Product/{@Id}";
+		rr:class schema:HotelRoom,schema:Product
+	];
+# HotelRoom Predicates
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Details/Name/Translation";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Details/AccommodationType";
+		]
+	];
+;
+	rr:predicateObjectMap [
+		rr:predicate schema:disambiguatingDescription;
+		rr:objectMap[
+			rml:reference "/Details/ProductType";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:occupancy;
+		rr:objectMap [
+			rr:parentTriplesMap <#OccupancyBeds>;
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:occupancy;
+		rr:objectMap [
+			rr:parentTriplesMap <#OccupancyAdults>;
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:occupancy;
+		rr:objectMap [
+			rr:parentTriplesMap <#OccupancyChildren>;
+		]
+	];
+#Product Predicates
+	rr:predicateObjectMap [
+		rr:predicate schema:offers;
+		rr:objectMap [
+			rr:parentTriplesMap <#OfferMapping>;
+		]
+	].
+
+<#OfferMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service/Products/Product";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/Product/Offer/{@Id}";
+		rr:class schema:Offer
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:priceSpecification;
+		rr:objectMap [
+			rr:parentTriplesMap <#PriceSpecificationMapping>;
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:description;
+		rr:objectMap[
+			rml:reference "/Price/@Rule";
+		]
+	].
+
+<#PriceSpecificationMapping>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service/Products/Product";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/Product/Price/{@Id}";
+		rr:class schema:PriceSpecification
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:name;
+		rr:objectMap[
+			rml:reference "/Price/Range/@Pax";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:minPrice;
+		rr:objectMap[
+			rml:reference "/Price/Range/@From";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:maxPrice;
+		rr:objectMap[
+			rml:reference "/Price/Range/@To";
+		]
+	].
+<#OccupancyBeds>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service/Products/Product";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/Product/Occupancy/Beds/{@Id}";
+		rr:class schema:QuantitativeValue
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:minValue;
+		rr:objectMap[
+			rml:reference "/Details/Occupancy/Beds/@Min";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:maxValue;
+		rr:objectMap[
+			rml:reference "/Details/Occupancy/Beds/@Max";
+		]
+	].
+
+
+
+<#OccupancyAdults>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service/Products/Product";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/Product/Occupancy/Adults/{@Id}";
+		rr:class schema:QuantitativeValue
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:minValue;
+		rr:objectMap[
+			rml:reference "/Details/Occupancy/Adults/@Min";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:maxValue;
+		rr:objectMap[
+			rml:reference "/Details/Occupancy/Adults/@Max";
+		]
+	].
+
+
+<#OccupancyChildren>
+
+	rml:logicalSource[
+		rml:source "Feratel/Feratel-Accommodation-Detail-2.xml";
+		rml:iterator "/ServiceProviders/ServiceProvider/Services/Service/Products/Product";
+		rml:referenceFormulation ql:XPath;
+	];
+
+	rr:subjectMap[
+		rr:template "http://Feratel-ServiceProvider/Service/Product/Occupancy/Children/{@Id}";
+		rr:class schema:QuantitativeValue
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:minValue;
+		rr:objectMap[
+			rml:reference "/Details/Occupancy/Children/@Min";
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate schema:maxValue;
+		rr:objectMap[
+			rml:reference "/Details/Occupancy/Children/@Max";
+		]
+	].

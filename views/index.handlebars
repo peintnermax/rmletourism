@@ -1,0 +1,71 @@
+ <h2 class="page-header">{{headertitle}}</h2>
+ {{#if errors}}
+       {{#each errors}}
+         <div class="alert alert-danger">{{msg}}</div>
+       {{/each}}
+ {{/if}}
+ {{#if error_msg}}
+       {{#each error_msg}}
+         <div class="alert alert-danger">{{msg}}</div>
+       {{/each}}
+ {{/if}}
+ {{#if success_msg}}
+       {{#each success_msg}}
+         <div class="alert alert-success">{{msg}}</div>
+       {{/each}}
+ {{/if}}
+
+
+
+ <p><span class="badge badge-dark">1</span> Select your XML Input file and download the RML file. </p>
+ <!--<p>
+   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">Events</a>
+   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Accommodation Details</button>
+   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Infrastructures</button>
+   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Response Files</button>
+ </p>
+ <div class="collapse" id="collapseExample">
+   <div class="card card-body">
+     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+   </div>
+ </div>-->
+ <p>
+   <a class="btn btn-outline-dark" href="/rmlfiles/feratel-events.rml">Events</a>
+   <a class="btn btn-outline-dark" href="/rmlfiles/feratel-accommodation-detail.rml">Accommodation Details</a>
+   <a class="btn btn-outline-dark" href="/rmlfiles/feratel-infrastructures.rml">Infrastructures</a>
+   <a class="btn btn-outline-dark" href="/rmlfiles/feratel-responses.rml">Response Files</a>
+ </p>
+
+ <p>
+   <span class="badge badge-dark">2</span> Clone and run RML Mapper from github.
+ </p>
+ <pre><code  class="language-html" data-lang="html">
+   git clone --recursive https://github.com/RMLio/RML-Mapper.git
+   git submodule update --init --recursive
+
+   bin/RML-Mapper -m &ltmapping_doc&gt -o &ltoutput_file&gt  [-f &ltfile_format&gt]
+   example: bin/RML-Mapper -m feratel-events.rml -o events.n3
+ </code></pre>
+
+   <p style="color:Tomato;">Make sure to have the right index to the XML input file in your RML file!</p>
+
+<p>
+  <span class="badge badge-dark">3</span> Upload your RDF/JSON-LD file.
+  <br>
+
+  <br>
+  Make an account on semantify.it and find your website's API KEY<br>
+
+</p>
+<form method="post" enctype="multipart/form-data" action="/upload" >
+    <div class="form-group">
+      <!--<label for="exampleInputEmail1">Semantify API KEY</label>-->
+      <input enctype="" name="apikey" type="text" class="form-control"  placeholder="Enter key">
+      <small  class="form-text text-muted">Find it on semantify <a href="https://semantify.it/dashboard" class="alert-link">dashboard</a></small>
+    </div>
+    <div class="form-group">
+      <input name="json_file" type="file" class="form-control-file">
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Upload"></input>
+</form>
