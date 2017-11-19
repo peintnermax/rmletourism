@@ -1,4 +1,4 @@
-# Node.js Loginapp
+# JSON-LD Upload Tool
 
 This is a JSON upload Tool for my thesis using Node.js.
 
